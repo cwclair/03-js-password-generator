@@ -1,48 +1,33 @@
 // Assignment Code
 const alphaLowerOnly = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-console.log(alphaLowerOnly);
 
 const alphaUpperOnly = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-console.log(alphaUpperOnly);
 
 const numOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-console.log(numOptions);
 
 const specialCharsList = ["!", "@", "$", "#", "%", "&", "*", "(", ")", "/"];
-console.log(specialCharsList);
 
 const alphaMixedCase = alphaLowerOnly.concat(alphaUpperOnly);
-console.log(alphaMixedCase);
 
 const alphaLowerNum = alphaLowerOnly.concat(numOptions);
-console.log(alphaLowerNum);
 
 const alphaUpperNum = alphaUpperOnly.concat(numOptions);
-console.log(alphaUpperNum);
 
 const alphaAllAndNums = alphaLowerOnly.concat(alphaUpperOnly, numOptions);
-console.log(alphaAllAndNums);
 
 const alphaLowerSpecial = alphaLowerOnly.concat(specialCharsList);
-console.log(alphaLowerSpecial);
 
 const alphaUpperSpecial = alphaUpperOnly.concat(specialCharsList);
-console.log(alphaUpperSpecial);
 
 const numSpecial = numOptions.concat(specialCharsList);
-console.log(numSpecial);
 
 const alphaAllAndSpecial = alphaLowerOnly.concat(alphaUpperOnly, specialCharsList);
-console.log(alphaAllAndSpecial);
 
 const alphaLowerNumSpec = alphaLowerOnly.concat(numOptions, specialCharsList);
-console.log(alphaLowerNumSpec);
 
 const alphaUpperNumSpec = alphaUpperOnly.concat(numOptions, specialCharsList);
-console.log(alphaUpperNumSpec);
 
 const allChars = alphaUpperOnly.concat(alphaLowerOnly, numOptions, specialCharsList);
-console.log(allChars);
 
 
 var generateBtn = document.querySelector("#generate");
@@ -79,21 +64,6 @@ console.log(passRequireNum);
 
 var passRequireSpec = window.prompt("Do you want your password to include at least one special character, such as a question mark, exclamation point, etc.? (Y/N)", "Y");
 console.log(passRequireSpec);
-
-
-
-
-//Define the function generatePassword?
-// function generatePassword () {
-//   var theString = "";
-//   var count = 0;
-//   while (count < passLength) {
-//     theString += alphaLowerOnly[Math.floor(Math.random() * alphaLowerOnly.length)];
-//     count ++;
-//   }
-//   return theString;
-// }
-// console.log(generatePassword());
 
 
 //Define the function generatePassword?
@@ -136,8 +106,24 @@ function generatePassword () {
     count ++;
   }
 } else if (passRequireLower === "Y" && passRequireCap === "Y" && passRequireNum === "Y" && passRequireSpec == "Y") {
-  while (count < passLength) {
+  while (count < passLength - 4) {
     theString += allChars[Math.floor(Math.random() * allChars.length)];
+    count ++;
+  }
+  while (count == passLength - 4) {
+    theString += alphaLowerOnly[Math.floor(Math.random() * alphaLowerOnly.length)];
+    count ++;
+  }
+  while (count == passLength - 3) {
+    theString += specialCharsList[Math.floor(Math.random() * specialCharsList.length)];
+    count ++;
+  }
+  while (count == passLength - 2) {
+    theString += numOptions[Math.floor(Math.random() * numOptions.length)];
+    count ++;
+  }
+  while (count == passLength - 1) {
+    theString += alphaUpperOnly[Math.floor(Math.random() * alphaUpperOnly.length)];
     count ++;
   }
 }
