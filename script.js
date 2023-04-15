@@ -1,4 +1,7 @@
 // Assignment Code
+const alphaLowerOnly = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+console.log(alphaLowerOnly);
+
 
 var generateBtn = document.querySelector("#generate");
 
@@ -7,15 +10,15 @@ var generateBtn = document.querySelector("#generate");
 
 var passLength = Number(window.prompt("Enter the length of your password (at least 8 characters, no more than 128 characters).", 8));
 
-
+// This will ensure the password is within the stated constraints of 8 and 128. 
 function passLengthCheck() {
   if (passLength < 8) {
   window.alert("That's not long enough! Let's go with the minimum of 8 characters.");
   passLength = 8;
   console.log(passLength);
   } else if (passLength > 128) {
-  window.alert("That's not long enough! Let's go with the maximum of 128 characters.");
-  passLength = 128;
+  window.alert("Whoa! Too many characters, my friend. The National Institute of Standards and Technology recommends 14-16 characters; let's meet in the middle at 15.");
+  passLength = 15;
   console.log(passLength);
 } else {
 console.log(passLength);
@@ -23,7 +26,7 @@ console.log(passLength);
 }
 passLengthCheck()
 
-var passRequireLower = window.prompt("Do you want your password to include at least one capital letter? (Y/N)", "Y");
+var passRequireLower = window.prompt("Do you want your password to include at least one lowercase letter? (Y/N)", "Y");
 console.log(passRequireLower);
 
 var passRequireCap = window.prompt("Do you want your password to include at least one capital letter? (Y/N)", "Y");
@@ -40,8 +43,15 @@ console.log(passRequireSpec);
 
 //Define the function generatePassword?
 function generatePassword () {
-  
+  var result = "";
+  var count = 0;
+  while (count < passLength) {
+    result += alphaLowerOnly[Math.floor(Math.random() * alphaLowerOnly.length)];
+    count ++;
+  }
+  return result;
 }
+console.log(generatePassword());
 
 // Write password to the #password input
 function writePassword() {
@@ -51,6 +61,9 @@ function writePassword() {
   passwordText.value = password;
 
 }
+writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
