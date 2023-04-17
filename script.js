@@ -55,25 +55,26 @@ passLengthCheck()
 
 // This is where the user is asked about what sorts of characters they want to use: lowercase letters, uppercase letters, numbers, and special characters.
 
-var passRequireLower = window.prompt("Do you want your password to include at least one lowercase letter? (Y/N)", "Y");
+var passRequireLower = window.confirm("Do you want your password to include at least one lowercase letter? (OK = Yes; Cancel = No)");
 console.log(passRequireLower);
 
-var passRequireCap = window.prompt("Do you want your password to include at least one capital letter? (Y/N)", "Y");
+var passRequireCap = window.confirm("Do you want your password to include at least one capital letter? (OK = Yes; Cancel = No)");
 console.log(passRequireCap);
 
-var passRequireNum = window.prompt("Do you want your password to include at least one number? (Y/N)", "Y");
+var passRequireNum = window.confirm("Do you want your password to include at least one number? (OK = Yes; Cancel = No)");
 console.log(passRequireNum);
 
-var passRequireSpec = window.prompt("Do you want your password to include at least one special character, such as a question mark, exclamation point, etc.? (Y/N)", "Y");
+var passRequireSpec = window.confirm("Do you want your password to include at least one special character, such as a question mark, exclamation point, etc.? (OK = Yes; Cancel = No)");
 console.log(passRequireSpec);
 
-// If the user answers "N" for all four categories, well, how can we generate a password? This function will force the user to use lowercase and uppercase letters.
+
+// If the user answers false for all four categories, well, how can we generate a password? This function will force the user to use lowercase and uppercase letters.
 
 function atLeastOne () {
-if (passRequireLower !== "Y" && passRequireCap !== "Y" && passRequireNum !== "Y" && passRequireSpec !== "Y") {
-  window.alert("Come on, now! You have to choose ONE of the character types. We will choose from lowercase and uppercase numbers.");
-  passRequireLower = "Y";
-  passRequireCap = "Y";
+if (passRequireLower !== true && passRequireCap !== true && passRequireNum !== true && passRequireSpec !== true) {
+  window.alert("Come on, now! You have to choose ONE of the character types. We will choose from lowercase and uppercase letters.");
+  passRequireLower = true;
+  passRequireCap = true;
   console.log(passRequireLower);
 }
 else {
@@ -82,16 +83,16 @@ else {
 }
 atLeastOne();
 
-//Define the function generatePassword?
+//Define the function generatePassword
 function generatePassword () {
   var theString = "";
   var count = 0;
-  if (passRequireLower === "Y" && passRequireCap === "N" && passRequireNum === "N" && passRequireSpec === "N") {
+  if (passRequireLower === true && passRequireCap === false && passRequireNum === false && passRequireSpec === false) {
   while (count < passLength) {
     theString += alphaLowerOnly[Math.floor(Math.random() * alphaLowerOnly.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "Y" && passRequireNum === "N" && passRequireSpec === "N") {
+} else if (passRequireLower === true && passRequireCap === true && passRequireNum === false && passRequireSpec === false) {
   while (count < passLength - 2) {
     theString += alphaMixedCase[Math.floor(Math.random() * alphaMixedCase.length)];
     count ++;
@@ -104,7 +105,7 @@ function generatePassword () {
     theString += alphaUpperOnly[Math.floor(Math.random() * alphaUpperOnly.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "N" && passRequireNum === "Y" && passRequireSpec === "N") {
+} else if (passRequireLower === true && passRequireCap === false && passRequireNum === true && passRequireSpec === false) {
   while (count < passLength - 2) {
     theString += alphaLowerNum[Math.floor(Math.random() * alphaLowerNum.length)];
     count ++;
@@ -117,7 +118,7 @@ function generatePassword () {
     theString += numOptions[Math.floor(Math.random() * numOptions.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "N" && passRequireNum === "N" && passRequireSpec === "Y") {
+} else if (passRequireLower === true && passRequireCap === false && passRequireNum === false && passRequireSpec === true) {
   while (count < passLength - 2) {
     theString += alphaLowerSpecial[Math.floor(Math.random() * alphaLowerSpecial.length)];
     count ++;
@@ -130,7 +131,7 @@ function generatePassword () {
     theString += specialCharsList[Math.floor(Math.random() * specialCharsList.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "Y" && passRequireNum === "Y" && passRequireSpec === "N") {
+} else if (passRequireLower === true && passRequireCap === true && passRequireNum === true && passRequireSpec === false) {
   while (count < passLength - 3) {
     theString += alphaAllAndNums[Math.floor(Math.random() * alphaAllAndNums.length)];
     count ++;
@@ -147,7 +148,7 @@ function generatePassword () {
     theString += alphaUpperOnly[Math.floor(Math.random() * alphaUpperOnly.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "Y" && passRequireNum === "N" && passRequireSpec === "Y") {
+} else if (passRequireLower === true && passRequireCap === true && passRequireNum === false && passRequireSpec === true) {
   while (count < passLength - 3) {
     theString += alphaAllAndSpecial[Math.floor(Math.random() * alphaAllAndSpecial.length)];
     count ++;
@@ -164,7 +165,7 @@ function generatePassword () {
     theString += alphaUpperOnly[Math.floor(Math.random() * alphaUpperOnly.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "N" && passRequireNum === "Y" && passRequireSpec === "Y") {
+} else if (passRequireLower === true && passRequireCap === false && passRequireNum === true && passRequireSpec === true) {
   while (count < passLength - 3) {
     theString += alphaLowerNumSpec[Math.floor(Math.random() * alphaLowerNumSpec.length)];
     count ++;
@@ -181,7 +182,7 @@ function generatePassword () {
     theString += numOptions[Math.floor(Math.random() * numOptions.length)];
     count ++;
   }
-} else if (passRequireLower === "N" && passRequireCap === "Y" && passRequireNum === "Y" && passRequireSpec === "Y") {
+} else if (passRequireLower === false && passRequireCap === true && passRequireNum === true && passRequireSpec === true) {
   while (count < passLength - 3) {
     theString += alphaUpperNumSpec[Math.floor(Math.random() * alphaUpperNumSpec.length)];
     count ++;
@@ -198,7 +199,7 @@ function generatePassword () {
     theString += alphaUpperOnly[Math.floor(Math.random() * alphaUpperOnly.length)];
     count ++;
   }
-} else if (passRequireLower === "N" && passRequireCap === "N" && passRequireNum === "Y" && passRequireSpec === "Y") {
+} else if (passRequireLower === false && passRequireCap === false && passRequireNum === true && passRequireSpec === true) {
   while (count < passLength - 2) {
     theString += numSpecial[Math.floor(Math.random() * numSpecial.length)];
     count ++;
@@ -211,7 +212,7 @@ function generatePassword () {
     theString += numOptions[Math.floor(Math.random() * numOptions.length)];
     count ++;
   }
-} else if (passRequireLower === "Y" && passRequireCap === "Y" && passRequireNum === "Y" && passRequireSpec === "Y") {
+} else if (passRequireLower === true && passRequireCap === true && passRequireNum === true && passRequireSpec === true) {
   while (count < passLength - 4) {
     theString += allChars[Math.floor(Math.random() * allChars.length)];
     count ++;
@@ -266,6 +267,9 @@ function writePassword() {
 writePassword();
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
+
+
+
+// window.alert("Would you like a different password? Click the Generate Password button to create a new password with the same criteria. If you want to change criteria, please reload the page.");
 
