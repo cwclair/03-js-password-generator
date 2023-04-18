@@ -67,20 +67,21 @@ Oh, and even though modifying the HTML wasn't part of the requirements, the repe
 
 ## Overview of Site
 
-![screenshot of start screen](Assets/screenshots/pass-generator-start-screen.png)
 How it looks when the user arrives at the page.
-
-
-![screenshot of the first prompt](Assets/screenshots/pass-generator-string-length.png)
+![screenshot of start screen](Assets/screenshots/pass-generator-start-screen.png)
+  
+  
 One of the criteria prompts (the password length)
-
-
-![screenshot of the lack-of-character-type alert window](Assets/screenshots/pass-generator-alert-window.png)
+![screenshot of the first prompt](Assets/screenshots/pass-generator-string-length.png)
+  
+  
 The message that greets the user if they say no to all four character types.
-
-
-![screenshot of generated password](Assets/screenshots/pass-generator-15char-pass.png)
+![screenshot of the lack-of-character-type alert window](Assets/screenshots/pass-generator-alert-window.png)
+  
+  
 A password randomly generated with 15 characters, using all four character types.
+![screenshot of generated password](Assets/screenshots/pass-generator-15char-pass.png)
+  
 
 ## Link to Deployed Site
 
