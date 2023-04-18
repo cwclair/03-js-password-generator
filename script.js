@@ -1,38 +1,19 @@
 // Assignment Code
-
-// Setting the arrays for my various character sets. I set four base sets (lowercase letters, uppercase letters, numbers 0-9, and a set of 10 special characters), and then concat those together to form larger arrays of specific character combinations.
-const alphaLowerOnly = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-const alphaUpperOnly = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-const numOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-
-const specialCharsList = ["!", "@", "$", "#", "%", "&", "*", "(", ")", "/"];
-
-const alphaMixedCase = alphaLowerOnly.concat(alphaUpperOnly);
-
-const alphaLowerNum = alphaLowerOnly.concat(numOptions);
-
-const alphaUpperNum = alphaUpperOnly.concat(numOptions);
-
-const alphaAllAndNums = alphaLowerOnly.concat(alphaUpperOnly, numOptions);
-
-const alphaLowerSpecial = alphaLowerOnly.concat(specialCharsList);
-
-const alphaUpperSpecial = alphaUpperOnly.concat(specialCharsList);
-
-const numSpecial = numOptions.concat(specialCharsList);
-
-const alphaAllAndSpecial = alphaLowerOnly.concat(alphaUpperOnly, specialCharsList);
-
-const alphaLowerNumSpec = alphaLowerOnly.concat(numOptions, specialCharsList);
-
-const alphaUpperNumSpec = alphaUpperOnly.concat(numOptions, specialCharsList);
-
-const allChars = alphaUpperOnly.concat(alphaLowerOnly, numOptions, specialCharsList);
-
-
 var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+function generatePassword() {
 
 //These prompts ask for password length and the inclusion of character types (lowercase, uppercase, number, special)
 var passLength = Number(window.prompt("Enter the length of your password (at least 8 characters, no more than 128 characters).", 8));
@@ -53,6 +34,7 @@ console.log(passLength);
 }
 passLengthCheck()
 
+
 // This is where the user is asked about what sorts of characters they want to use: lowercase letters, uppercase letters, numbers, and special characters.
 
 var passRequireLower = window.confirm("Do you want your password to include at least one lowercase letter? (OK = Yes; Cancel = No)");
@@ -72,7 +54,7 @@ console.log(passRequireSpec);
 
 function atLeastOne () {
 if (passRequireLower !== true && passRequireCap !== true && passRequireNum !== true && passRequireSpec !== true) {
-  window.alert("Come on, now! You have to choose ONE of the character types. We will choose from lowercase and uppercase letters.");
+  window.alert("Come on, now! You have to give me something to work with. I'm going to use lowercase and uppercase letters.");
   passRequireLower = true;
   passRequireCap = true;
   console.log(passRequireLower);
@@ -83,9 +65,26 @@ else {
 }
 atLeastOne();
 
-//Define the function generatePassword
-function generatePassword () {
-  var theString = "";
+
+// Setting the arrays for my various character sets. I set four base sets (lowercase letters, uppercase letters, numbers 0-9, and a set of 10 special characters), and then concat those together to form larger arrays of specific character combinations.
+const alphaLowerOnly = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const alphaUpperOnly = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const numOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const specialCharsList = ["!", "@", "$", "#", "%", "&", "*", "(", ")", "/"];
+const alphaMixedCase = alphaLowerOnly.concat(alphaUpperOnly);
+const alphaLowerNum = alphaLowerOnly.concat(numOptions);
+const alphaUpperNum = alphaUpperOnly.concat(numOptions);
+const alphaAllAndNums = alphaLowerOnly.concat(alphaUpperOnly, numOptions);
+const alphaLowerSpecial = alphaLowerOnly.concat(specialCharsList);
+const alphaUpperSpecial = alphaUpperOnly.concat(specialCharsList);
+const numSpecial = numOptions.concat(specialCharsList);
+const alphaAllAndSpecial = alphaLowerOnly.concat(alphaUpperOnly, specialCharsList);
+const alphaLowerNumSpec = alphaLowerOnly.concat(numOptions, specialCharsList);
+const alphaUpperNumSpec = alphaUpperOnly.concat(numOptions, specialCharsList);
+const allChars = alphaUpperOnly.concat(alphaLowerOnly, numOptions, specialCharsList);
+
+
+var theString = "";
   var count = 0;
   if (passRequireLower === true && passRequireCap === false && passRequireNum === false && passRequireSpec === false) {
   while (count < passLength) {
@@ -239,37 +238,8 @@ function generatePassword () {
     count ++;
   }
 } 
-return theString;
+
+
+
+  return theString;
 }
-console.log(generatePassword());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-writePassword();
-
-// Add event listener to generate button
-
-
-
-
-// window.alert("Would you like a different password? Click the Generate Password button to create a new password with the same criteria. If you want to change criteria, please reload the page.");
-
