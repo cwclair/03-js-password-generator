@@ -51,7 +51,7 @@ First, the character-length safeguard, a function I called "passLengthCheck". Wh
 
 And yes, that's an Easter Egg in there that my son basically dared me to put in the code. 
 
-Next, what to do if the user says they don't want to use any of the four characer types? That triggers an alert window that points out the issue, and defaults to lowercase and uppercase letters. I call this function atLeastOne.
+Next, what to do if the user says they don't want to use any of the four character types? That triggers an alert window that points out the issue, and defaults to lowercase and uppercase letters. I call this function atLeastOne.
 
 ![screenshot of atLeastOne function](Assets/screenshots/at-least-one-type.png)
 
