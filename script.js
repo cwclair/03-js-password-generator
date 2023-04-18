@@ -18,7 +18,7 @@ function generatePassword() {
 //These prompts ask for password length and the inclusion of character types (lowercase, uppercase, number, special)
 var passLength = Number(window.prompt("Enter the length of your password (at least 8 characters, no more than 128 characters).", 8));
 
-// This will ensure the password is within the stated constraints of 8 and 128. 
+// This will ensure the password is within the stated constraints of 8 and 128. If a number less than 8 is entered, I force the user to use the minimum length of 8. If the user goes over 128, I trot out a statistic about password-length recommendations and set the password in that range. If they don't like it, they can generate a new one!
 function passLengthCheck() {
   if (passLength < 8) {
   window.alert("That's not long enough! Let's go with the minimum of 8 characters.");
@@ -28,6 +28,8 @@ function passLengthCheck() {
   window.alert("Whoa! Too many characters, my friend. The National Institute of Standards and Technology recommends 14-16 characters; let's meet in the middle at 15.");
   passLength = 15;
   console.log(passLength);
+} else if (passLength === 69) {
+  window.alert("Nicccccccccccccce.");
 } else {
 console.log(passLength);
 }
@@ -66,7 +68,7 @@ else {
 atLeastOne();
 
 
-// Setting the arrays for my various character sets. I set four base sets (lowercase letters, uppercase letters, numbers 0-9, and a set of 10 special characters), and then concat those together to form larger arrays of specific character combinations.
+// Setting the arrays for my various character sets. I established four base sets (lowercase letters, uppercase letters, numbers 0-9, and a set of 10 special characters), and then concat those together to form larger arrays of specific character combinations.
 const alphaLowerOnly = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 const alphaUpperOnly = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 const numOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -83,6 +85,11 @@ const alphaLowerNumSpec = alphaLowerOnly.concat(numOptions, specialCharsList);
 const alphaUpperNumSpec = alphaUpperOnly.concat(numOptions, specialCharsList);
 const allChars = alphaUpperOnly.concat(alphaLowerOnly, numOptions, specialCharsList);
 
+/* Here's where I develop the string of password characters. The count begins at 0; I use "while" to keep the password string growing until the length of the string meets the numeric value of the count. The "if/else" statements factor in the criteria specified. And the combination of Math.random and Math.floor pull the random character from the assigned array.
+
+I use a += operator to append the next character onto the existing string. I pull from the appropriate array to establish the password string. 
+
+You'll notice I ensure that each specified criterion is selected by forcing each of the last "n" characters (1, 2, 3, or 4) to cover each of the specified types. I found when I didn't enforce this, some of the shorter passwords (8 chars, for example) might not return each of the character types if I pulled from the full 72-character array. */
 
 var theString = "";
   var count = 0;
@@ -238,8 +245,5 @@ var theString = "";
     count ++;
   }
 } 
-
-
-
   return theString;
 }
